@@ -2,26 +2,17 @@ import React from "react";
 
 import "../styles/PhotoListItem.scss";
 
-const PhotoListItem = ({ username, imageSource, id, location, profile }) => {
+const PhotoListItem = (props) => {
   return (
     <div className="photo-list-item">
-      <img
-        src={sampleDataForPhotoListItem.imageSource}
-        alt={`Photo ${sampleDataForPhotoListItem.id}`}
-      />
+      <img src={props.imageSource} alt={`Photo ${props.id}`} />
 
       <div className="user-info">
-        <img
-          src={sampleDataForPhotoListItem.profile}
-          alt={`${sampleDataForPhotoListItem.username}'s profile`}
-        />
+        <img src={props.profile} alt={`${props.username}'s profile`} />
       </div>
-      <span>{sampleDataForPhotoListItem.username}</span>
+      <span>{props.username}</span>
       <div className="location">
-        {
-          (sampleDataForPhotoListItem.location.city,
-          sampleDataForPhotoListItem.location.country)
-        }
+        {(props.location.city, props.location.country)}
       </div>
     </div>
   );
