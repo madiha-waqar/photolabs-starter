@@ -60,6 +60,8 @@ const PhotoList = () => {
   return (
     <ul className="photo-list">
       <PhotoListItem PhotoData={sampleDataForPhotoList} />
+      <PhotoListItem PhotoData={sampleDataForPhotoList} />
+      <PhotoListItem PhotoData={sampleDataForPhotoList} />
     </ul>
   );
 };
