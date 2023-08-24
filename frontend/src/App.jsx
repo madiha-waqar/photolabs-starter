@@ -10,7 +10,7 @@ const App = () => {
   return (
     <div className="App">
       <TopNavigationBar {...topics} />
-      <PhotoList />
+      <PhotoList {...photos} />
       <TopicList {...topics} />
     </div>
   );
