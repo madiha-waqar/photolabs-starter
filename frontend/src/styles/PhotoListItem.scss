@@ -1,4 +1,6 @@
 .photo-list__item {
+  display: flex;
+  flex-direction: column;
   margin: 24px;
   padding: 8px;
   border-width: 0.5px;
@@ -6,8 +8,7 @@
   border-style: solid;
   border-radius: 8px;
   max-width: fit-content;
-  
-}
+  }
 
 .photo-list__image {
   user-select: none;
