@@ -8,12 +8,17 @@ const sampleDataForTopicListItem = {
   label: "Nature",
 };
 
-const TopicListItem = () => {
-  return (
-    <div className="topic-list__item">
-      {/* Insert React */}
-    </div>
-  );
+const TopicListItem = (props) => {
+  const topics = props.TopicData;
+
+  const topicItem = topics.map((topic) => (
+    <li key={topic.id}>
+      <div className="topic-list__item">
+        <span>{topic.title}</span>
+      </div>
+    </li>
+  ));
+  return <ul>{topicItem}</ul>;
 };
 
 export default TopicListItem;
