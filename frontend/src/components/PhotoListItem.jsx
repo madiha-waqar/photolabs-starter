@@ -6,7 +6,7 @@ const PhotoListItem = (props) => {
   const photo = props.PhotoData;
 
   return (
-    <div className="photo-list__item" key={photo.id}>
+    <div className="photo-list__item" key={photo.id} onClick={props.onClick}>
       <PhotoFavButton
         alert={props.alert}
         setAlert={props.setAlert}
