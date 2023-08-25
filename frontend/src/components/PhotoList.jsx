@@ -3,13 +3,21 @@ import PhotoListItem from "./PhotoListItem";
 import "../styles/PhotoList.scss";
 import photos from "../mocks/photos";
 
-const PhotoList = () => {
+const PhotoList = (props) => {
   return (
-    <ul className="photo-list">
-      <PhotoListItem PhotoData={photos} />
-      <PhotoListItem PhotoData={photos} />
-      <PhotoListItem PhotoData={photos} />
-    </ul>
+    <div className="photo-list">
+      {photos.map((photo) => (
+        <PhotoListItem
+          alert={props.alert}
+          setAlert={props.setAlert}
+          key={photo.id}
+          id={photo.id}
+          PhotoData={photo}
+          favPhotos={props.favPhotos}
+          toggleFavourites={props.toggleFavourites}
+        />
+      ))}
+    </div>
   );
 };
 

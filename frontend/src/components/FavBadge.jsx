@@ -1,14 +1,13 @@
-import React from 'react';
-import FavIcon from './FavIcon';
+import React from "react";
+import FavIcon from "./FavIcon";
+import "../styles/FavBadge.scss";
 
-import '../styles/FavBadge.scss';
-
-const FavBadge = ({ isFavPhotoExist }) => {
+const FavBadge = ({ selected, displayAlert }) => {
   return (
-    <div className='fav-badge'>
-      <FavIcon displayAlert={!!isFavPhotoExist}/>
+    <div className="fav-badge">
+      <FavIcon selected={selected} displayAlert={displayAlert} />
     </div>
-  ) 
+  );
 };
 
 export default FavBadge;

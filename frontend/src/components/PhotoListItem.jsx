@@ -3,26 +3,29 @@ import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
 const PhotoListItem = (props) => {
-  const photos = props.PhotoData;
+  const photo = props.PhotoData;
 
-  const photoCard = photos.map((photo) => (
-    <li className="photo-list" key={photo.id}>
-      <div className="photo-list__item">
-        <PhotoFavButton />
-        <div>
-          <img className="photo-list__image" src={photo.urls.full} />
-        </div>
-        <div className="photo-list__user-details">
-          <img className="photo-list__user-profile" src={photo.user.profile} />
-          <div className="photo-list__user-info">
-            <span>{photo.username}</span>
-            <br />
-            <span className="photo-list__user-location">{`${photo.location.city}, ${photo.location.country}`}</span>
-          </div>
+  return (
+    <div className="photo-list__item" key={photo.id}>
+      <PhotoFavButton
+        alert={props.alert}
+        setAlert={props.setAlert}
+        favPhotos={props.favPhotos}
+        id={props.id}
+        toggleFavourites={props.toggleFavourites}
+      />
+      <div>
+        <img className="photo-list__image" src={photo.urls.full} />
+      </div>
+      <div className="photo-list__user-details">
+        <img className="photo-list__user-profile" src={photo.user.profile} />
+        <div className="photo-list__user-info">
+          <span>{photo.username}</span>
+          <br />
+          <span className="photo-list__user-location">{`${photo.location.city}, ${photo.location.country}`}</span>
         </div>
       </div>
-    </li>
-  ));
-  return <ul>{photoCard}</ul>;
+    </div>
+  );
 };
 export default PhotoListItem;
