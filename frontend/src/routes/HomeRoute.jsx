@@ -27,11 +27,6 @@ const HomeRoute = () => {
     setModalVisible(true);
   };
 
-  const closeModal = () => {
-    setSelectedPhotoId(null);
-    setModalVisible(false);
-  };
-
   return (
     <div className="home-route">
       <TopNavigationBar
