@@ -36,7 +36,7 @@ const PhotoDetailsModal = ({
       <p className="photo-details-modal__header">Similar Photos</p>
 
       {/* Display similar photos */}
-      <div className="photo-details-modal__similar-photos">
+      <div>
         <PhotoList
           className="photo-details-modal__images"
           alert={alert}
