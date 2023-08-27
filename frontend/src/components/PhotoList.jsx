@@ -17,10 +17,10 @@ const PhotoList = (props) => {
           id={photo.id}
           PhotoData={photo}
           favPhotos={props.favPhotos}
+          setSelectedPhotoId={props.setSelectedPhotoId}
           toggleFavourites={props.toggleFavourites}
           setModalVisible={props.setModalVisible}
           onClick={() => handlePhotoClick(photo.id)}
-          setSelectedPhotoId={props.setSelectedPhotoId}
         />
       ))}
     </div>
