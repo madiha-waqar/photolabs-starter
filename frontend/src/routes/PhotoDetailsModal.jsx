@@ -4,6 +4,7 @@ import "../styles/PhotoDetailsModal.scss";
 import closeSymbol from "../assets/closeSymbol.svg";
 import PhotoList from "components/PhotoList";
 import similarPhotos from "../mocks/photos.js";
+import PhotoFavButton from "../components/PhotoFavButton";
 
 const PhotoDetailsModal = ({
   setModalVisible,
@@ -33,6 +34,14 @@ const PhotoDetailsModal = ({
         {/* Display full size photo */}
         <img src={photo.urls.full} className="photo-details-modal__image" />
 
+        <PhotoFavButton
+          alert={alert}
+          setAlert={setAlert}
+          favPhotos={favPhotos}
+          toggleFavourites={toggleFavourites}
+          id={selectedPhotoId}
+        />
+
         <div className="photo-list__user-details align">
           <img className="photo-list__user-profile" src={photo.user.profile} />
           <div className="photo-list__user-info">
@@ -57,7 +66,6 @@ const PhotoDetailsModal = ({
           favPhotos={favPhotos}
           setSelectedPhotoId={setSelectedPhotoId}
           toggleFavourites={toggleFavourites}
-          setModalVisible={setModalVisible}
         />
       </div>
     </div>
