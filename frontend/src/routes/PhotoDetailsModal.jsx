@@ -5,6 +5,7 @@ import closeSymbol from "../assets/closeSymbol.svg";
 import PhotoList from "components/PhotoList";
 import similarPhotos from "../mocks/photos.js";
 import PhotoFavButton from "../components/PhotoFavButton";
+import "../styles/PhotoFavButton.scss";
 
 const PhotoDetailsModal = ({
   setModalVisible,
@@ -14,6 +15,7 @@ const PhotoDetailsModal = ({
   setAlert,
   setSelectedPhotoId,
   toggleFavourites,
+  openPhotoModal,
 }) => {
   const closeModal = () => {
     setModalVisible(false); // Close the modal
@@ -30,10 +32,9 @@ const PhotoDetailsModal = ({
         <img src={closeSymbol} alt="close symbol" />
       </button>
 
-      <div className="photo-details-modal__image">
+      <div>
         {/* Display full size photo */}
         <img src={photo.urls.full} className="photo-details-modal__image" />
-
         <PhotoFavButton
           alert={alert}
           setAlert={setAlert}
@@ -41,7 +42,6 @@ const PhotoDetailsModal = ({
           toggleFavourites={toggleFavourites}
           id={selectedPhotoId}
         />
-
         <div className="photo-list__user-details align">
           <img className="photo-list__user-profile" src={photo.user.profile} />
           <div className="photo-list__user-info">
@@ -66,6 +66,7 @@ const PhotoDetailsModal = ({
           favPhotos={favPhotos}
           setSelectedPhotoId={setSelectedPhotoId}
           toggleFavourites={toggleFavourites}
+          openPhotoModal={openPhotoModal}
         />
       </div>
     </div>

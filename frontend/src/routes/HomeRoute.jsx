@@ -58,6 +58,7 @@ const HomeRoute = () => {
           setAlert={setAlert}
           favPhotos={favPhotos}
           toggleFavourites={toggleFavourites}
+          openPhotoModal={openPhotoModal}
         />
       )}
     </div>
