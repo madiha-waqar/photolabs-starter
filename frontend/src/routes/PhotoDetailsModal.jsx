@@ -6,7 +6,6 @@ import PhotoList from "components/PhotoList";
 import similarPhotos from "../mocks/photos.js";
 import PhotoFavButton from "../components/PhotoFavButton";
 import "../styles/PhotoFavButton.scss";
-import FavIcon from "../components/FavIcon";
 
 const PhotoDetailsModal = ({
   setModalVisible,

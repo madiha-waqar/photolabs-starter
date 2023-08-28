@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import "../styles/HomeRoute.scss";
 import TopNavigationBar from "../components/TopNavigationBar";
 import PhotoList from "../components/PhotoList";
 import PhotoDetailsModal from "routes/PhotoDetailsModal";
 import photos from "../mocks/photos";
+import "../styles/HomeRoute.scss";
 
 const HomeRoute = () => {
   const [alert, setAlert] = useState(false);
