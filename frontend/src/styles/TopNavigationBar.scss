@@ -1,7 +1,7 @@
 .top-nav-bar {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
+  /* Aligns the logo to the left and the right elements to the right */
   padding: 8px;
   align-items: center;
   -webkit-box-shadow: 0 4px 6px -6px #222;
@@ -17,4 +17,14 @@
   color: #111;
   text-underline-position: auto;
   margin-left: 24px;
+}
+
+.top-nav-bar__right {
+  display: flex;
+  align-items: center;
+}
+
+.top-nav-bar__right>* {
+  margin-left: 24px;
+  /* Add margin between TopicList and FavBadge */
 }
