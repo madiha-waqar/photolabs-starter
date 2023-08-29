@@ -17,7 +17,7 @@ const PhotoListItem = (props) => {
         <img
           className="photo-list__image"
           src={photo.urls.full}
-          onClick={props.onClick}
+          onClick={() => props.onClick(photo.id)}
         />
       </div>
       <div className="photo-list__user-details">

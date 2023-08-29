@@ -7,7 +7,8 @@ const PhotoList = (props) => {
   const handlePhotoClick = (id) => {
     // Check if the modal is already visible
     if (!props.modalVisible) {
-      props.openPhotoModal(id);
+      props.openPhotoModal();
+      props.setSelectedPhoto(id);
     }
   };
   return (
@@ -23,8 +24,9 @@ const PhotoList = (props) => {
           setSelectedPhotoId={props.setSelectedPhotoId}
           toggleFavourites={props.toggleFavourites}
           setModalVisible={props.setModalVisible}
-          onClick={() => handlePhotoClick(photo.id)}
+          onClick={handlePhotoClick}
           openPhotoModal={props.openPhotoModal}
+          onClosePhotoDetailsModal={props.onClosePhotoDetailsModal}
         />
       ))}
     </div>

@@ -1,64 +1,36 @@
-import React, { useState } from "react";
+import React from "react";
 import TopNavigationBar from "../components/TopNavigationBar";
 import PhotoList from "../components/PhotoList";
 import PhotoDetailsModal from "routes/PhotoDetailsModal";
-import photos from "../mocks/photos";
 import "../styles/HomeRoute.scss";
+import useApplicationData from "hooks/useApplicationData";
 
 const HomeRoute = () => {
-  const [alert, setAlert] = useState(false);
-  const [favPhotos, setfavPhotos] = useState([]);
-  const [modalVisible, setModalVisible] = useState(false);
-  const [selectedPhotoId, setSelectedPhotoId] = useState(null);
-
-  const toggleFavourites = (id) => {
-    if (favPhotos.includes(id)) {
-      setfavPhotos((prev) => {
-        return [...prev].filter((tempId) => tempId !== id);
-      });
-    } else {
-      setfavPhotos((prev) => {
-        return [...prev, id];
-      });
-    }
-  };
-
-  const openPhotoModal = (id) => {
-    setSelectedPhotoId(id);
-    setModalVisible(true);
-  };
+  const { state, actions } = useApplicationData();
 
   return (
     <div className="home-route">
       <TopNavigationBar
-        alert={alert}
-        setAlert={setAlert}
-        favPhotos={favPhotos}
-        toggleFavourites={toggleFavourites}
+        favPhotos={state.favPhotos}
+        toggleFavourites={actions.toggleFavourites}
       />
       <PhotoList
-        alert={alert}
-        setAlert={setAlert}
-        favPhotos={favPhotos}
-        toggleFavourites={toggleFavourites}
-        modalVisible={modalVisible}
-        setModalVisible={setModalVisible}
-        openPhotoModal={openPhotoModal}
-        selectedPhotoId={selectedPhotoId}
-        setSelectedPhotoId={setSelectedPhotoId}
-        photos={photos}
+        favPhotos={state.favPhotos}
+        modalVisible={state.modalVisible}
+        selectedPhotoId={state.selectedPhotoId}
+        toggleFavourites={actions.toggleFavourites}
+        openPhotoModal={actions.openPhotoModal}
+        setSelectedPhoto={actions.setSelectedPhoto}
+        onClosePhotoDetailsModal={actions.onClosePhotoDetailsModal}
       />
-      {modalVisible && selectedPhotoId !== null && (
+      {state.modalVisible && state.selectedPhotoId && (
         <PhotoDetailsModal
-          selectedPhotoId={selectedPhotoId}
-          setModalVisible={setModalVisible}
-          setSelectedPhotoId={setSelectedPhotoId}
-          photos={photos}
-          alert={alert}
-          setAlert={setAlert}
-          favPhotos={favPhotos}
-          toggleFavourites={toggleFavourites}
-          openPhotoModal={openPhotoModal}
+          selectedPhotoId={state.selectedPhotoId}
+          favPhotos={state.favPhotos}
+          toggleFavourites={actions.toggleFavourites}
+          setSelectedPhoto={actions.setSelectedPhoto}
+          openPhotoModal={actions.openPhotoModal}
+          onClosePhotoDetailsModal={actions.onClosePhotoDetailsModal}
         />
       )}
     </div>
