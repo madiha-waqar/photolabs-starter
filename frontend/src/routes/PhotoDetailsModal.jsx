@@ -3,7 +3,7 @@ import React from "react";
 import "../styles/PhotoDetailsModal.scss";
 import closeSymbol from "../assets/closeSymbol.svg";
 import PhotoList from "components/PhotoList";
-import similarPhotos from "../mocks/photos.js";
+// import similarPhotos from "../mocks/photos.js";
 import PhotoFavButton from "../components/PhotoFavButton";
 import "../styles/PhotoFavButton.scss";
 import useApplicationData from "../hooks/useApplicationData";
@@ -17,11 +17,13 @@ const PhotoDetailsModal = ({
   toggleFavourites,
   openPhotoModal,
   onClosePhotoDetailsModal,
+  photos,
 }) => {
   //invoke the custom hook
-  //const { actions } = useApplicationData();
+  const { actions } = useApplicationData();
 
-  const photo = similarPhotos.find((photo) => photo.id === selectedPhotoId);
+  // const photo = similarPhotos.find((photo) => photo.id === selectedPhotoId);
+  const photo = photos.find((photo) => photo.id === selectedPhotoId);
 
   return (
     <div className="photo-details-modal">
@@ -65,11 +67,12 @@ const PhotoDetailsModal = ({
       <div>
         <PhotoList
           className="photo-details-modal__images"
+          PhotoData={photo}
           alert={alert}
           setAlert={setAlert}
           key={photo.id}
           id={photo.id}
-          PhotoData={photo}
+          photos={photos}
           favPhotos={favPhotos}
           setSelectedPhoto={setSelectedPhoto}
           toggleFavourites={toggleFavourites}

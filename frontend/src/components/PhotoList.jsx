@@ -1,7 +1,6 @@
 import React from "react";
 import PhotoListItem from "./PhotoListItem";
 import "../styles/PhotoList.scss";
-import photos from "../mocks/photos";
 
 const PhotoList = (props) => {
   const handlePhotoClick = (id) => {
@@ -11,9 +10,16 @@ const PhotoList = (props) => {
       props.setSelectedPhoto(id);
     }
   };
+
+  console.log(props.photos);
+  // Check if props.photos is defined and is an array
+  if (!props.photos || !Array.isArray(props.photos)) {
+    return <div className="photo-list">No photos to display.</div>;
+  }
+
   return (
     <div className="photo-list">
-      {photos.map((photo) => (
+      {props.photos.map((photo) => (
         <PhotoListItem
           alert={props.alert}
           setAlert={props.setAlert}

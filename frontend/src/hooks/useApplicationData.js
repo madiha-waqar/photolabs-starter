@@ -59,7 +59,7 @@ function reducer(state, action) {
     case ACTIONS.SET_TOPIC_DATA:
       return {
         ...state,
-        topicDataData: action.payload,
+        topicData: action.payload,
       };
     default:
       throw new Error(
@@ -92,12 +92,23 @@ const useApplicationData = () => {
     dispatch({ type: ACTIONS.SET_SELECTED_PHOTO_ID, payload: id || null });
   };
 
-  // Fetch photo data
+  //Fetch photo data
   useEffect(() => {
     fetch("/api/photos")
       .then((res) => res.json())
       .then((data) => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }))
   }, []);
+  // useEffect(() => {
+  //   fetch("/api/photos")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log("Fetched Photo Data:", data);
+  //       dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data });
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error Fetching Photo Data:", error);
+  //     });
+  // }, []);
 
   // Fetch topic data
   useEffect(() => {
@@ -113,6 +124,8 @@ const useApplicationData = () => {
       toggleFavourites,
       onClosePhotoDetailsModal,
       setSelectedPhoto,
+      photoData: state.photoData,
+      topicData: state.topicData,
     },
   };
 }

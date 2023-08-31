@@ -5,7 +5,8 @@ import PhotoDetailsModal from "routes/PhotoDetailsModal";
 import "../styles/HomeRoute.scss";
 import useApplicationData from "hooks/useApplicationData";
 
-const HomeRoute = () => {
+const HomeRoute = (props) => {
+  const { photos, topics } = props;
   const { state, actions } = useApplicationData();
 
   return (
@@ -13,9 +14,11 @@ const HomeRoute = () => {
       <TopNavigationBar
         favPhotos={state.favPhotos}
         toggleFavourites={actions.toggleFavourites}
+        topics={props.topics}
       />
       <PhotoList
         favPhotos={state.favPhotos}
+        photos={props.photos}
         modalVisible={state.modalVisible}
         selectedPhotoId={state.selectedPhotoId}
         toggleFavourites={actions.toggleFavourites}
@@ -25,6 +28,7 @@ const HomeRoute = () => {
       />
       {state.modalVisible && state.selectedPhotoId && (
         <PhotoDetailsModal
+          photos={props.photos}
           selectedPhotoId={state.selectedPhotoId}
           favPhotos={state.favPhotos}
           toggleFavourites={actions.toggleFavourites}
