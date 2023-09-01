@@ -1,7 +1,7 @@
 // Custom Hook: useApplicationData
 import { useReducer, useEffect } from "react";
 
-// actions
+// Actions for reducer
 export const ACTIONS = {
   SET_SELECTED_PHOTO_ID: "SET_SELECTED_PHOTO_ID",
   SET_FAV_PHOTO_ADDED: "SET_FAV_PHOTO_ADDED",
@@ -14,7 +14,7 @@ export const ACTIONS = {
   GET_PHOTOS_BY_TOPIC: "GET_PHOTOS_BY_TOPIC"
 };
 
-// state data
+// Initial state
 const initialState = {
   photoData: [],
   topicData: [],
@@ -24,8 +24,8 @@ const initialState = {
   topicPhotos: [],
 };
 
+// Define reducer function to handle actions
 function reducer(state, action) {
-  7
   switch (action.type) {
     case ACTIONS.SET_SELECTED_PHOTO_ID:
       return {
@@ -76,9 +76,11 @@ function reducer(state, action) {
   }
 }
 
+// Custom hook now manage application data
 const useApplicationData = () => {
-  const [state, dispatch] = useReducer(reducer, initialState);
 
+  // Initialize state and dispatch function using the useReducer hook
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const openPhotoModal = () => {
     dispatch({ type: ACTIONS.SET_PHOTO_MODAL_VISIBLE });
@@ -121,6 +123,7 @@ const useApplicationData = () => {
       .then(data => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }));
   }, []);
 
+  // Return state and actions to be used across app
   return {
     state,
     actions: {

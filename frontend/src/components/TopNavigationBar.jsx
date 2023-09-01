@@ -7,7 +7,9 @@ import FavBadge from "./FavBadge";
 const TopNavigation = (props) => {
   return (
     <div className="top-nav-bar">
+      {/* PhotoLab app logo text */}
       <span className="top-nav-bar__logo">PhotoLabs</span>
+      {/* Style topic list to the right in navigation bar */}
       <div className="top-nav-bar__right">
         <TopicList
           topics={props.topics}

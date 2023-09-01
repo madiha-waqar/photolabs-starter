@@ -15,12 +15,14 @@ const PhotoListItem = (props) => {
         toggleFavourites={props.toggleFavourites}
       />
       <div>
+        {/* Display full size photo image */}
         <img
           className="photo-list__image"
           src={photo.urls.full}
           onClick={() => props.onClick(photo.id)}
         />
       </div>
+      {/* Display user information i-e user profile image, username, city and country */}
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile" src={photo.user.profile} />
         <div className="photo-list__user-info">

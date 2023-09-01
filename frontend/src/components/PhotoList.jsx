@@ -13,6 +13,7 @@ const PhotoList = (props) => {
 
   return (
     <div className="photo-list">
+      {/* Map through photos array */}
       {props.photos.map((photo) => (
         <PhotoListItem
           alert={props.alert}

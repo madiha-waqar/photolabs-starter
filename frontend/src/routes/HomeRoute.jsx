@@ -6,16 +6,19 @@ import "../styles/HomeRoute.scss";
 import useApplicationData from "hooks/useApplicationData";
 
 const HomeRoute = () => {
+  // Initialize application data using custom hook
   const { state, actions } = useApplicationData();
 
   return (
     <div className="home-route">
+      {/* Render navigation bar */}
       <TopNavigationBar
         favPhotos={state.favPhotos}
         toggleFavourites={actions.toggleFavourites}
         topics={state.topicData}
         fetchPhotosByTopic={actions.fetchPhotosByTopic}
       />
+      {/* Render photos */}
       <PhotoList
         favPhotos={state.favPhotos}
         photos={state.photoData}
@@ -26,6 +29,7 @@ const HomeRoute = () => {
         setSelectedPhoto={actions.setSelectedPhoto}
         onClosePhotoDetailsModal={actions.onClosePhotoDetailsModal}
       />
+      {/* Render data in modal if it is open */}
       {state.modalVisible && state.selectedPhotoId && (
         <PhotoDetailsModal
           photos={state.photoData}
