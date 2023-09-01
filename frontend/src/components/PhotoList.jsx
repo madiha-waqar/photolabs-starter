@@ -11,12 +11,6 @@ const PhotoList = (props) => {
     }
   };
 
-  console.log(props.photos);
-  // Check if props.photos is defined and is an array
-  if (!props.photos || !Array.isArray(props.photos)) {
-    return <div className="photo-list">No photos to display.</div>;
-  }
-
   return (
     <div className="photo-list">
       {props.photos.map((photo) => (

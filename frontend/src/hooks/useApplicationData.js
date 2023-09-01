@@ -25,7 +25,7 @@ const initialState = {
 };
 
 function reducer(state, action) {
-7
+  7
   switch (action.type) {
     case ACTIONS.SET_SELECTED_PHOTO_ID:
       return {
@@ -128,10 +128,9 @@ const useApplicationData = () => {
       toggleFavourites,
       onClosePhotoDetailsModal,
       setSelectedPhoto,
+      fetchPhotosByTopic,
       photoData: state.photoData,
       topicData: state.topicData,
-      topicPhotos: state.topicPhotos,
-      fetchPhotosByTopic,
     },
   };
 }

@@ -14,6 +14,7 @@ const TopNavigation = (props) => {
           fetchPhotosByTopic={props.fetchPhotosByTopic}
         />
         <FavBadge
+          // display selected and set alert when there is any favPhoto
           selected={props.favPhotos.length > 0}
           displayAlert={props.favPhotos.length > 0}
         />
