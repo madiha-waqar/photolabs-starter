@@ -11,6 +11,7 @@ export const ACTIONS = {
   TOGGLE_FAVORITE: "TOGGLE_FAVORITE",
   SET_PHOTO_DATA: "SET_PHOTO_DATA",
   SET_TOPIC_DATA: "SET_TOPIC_DATA",
+  GET_PHOTOS_BY_TOPIC: "GET_PHOTOS_BY_TOPIC"
 };
 
 // state data
@@ -20,10 +21,11 @@ const initialState = {
   favPhotos: [],
   modalVisible: false,
   selectedPhotoId: null,
+  topicPhotos: [],
 };
 
 function reducer(state, action) {
-
+7
   switch (action.type) {
     case ACTIONS.SET_SELECTED_PHOTO_ID:
       return {
@@ -61,6 +63,12 @@ function reducer(state, action) {
         ...state,
         topicData: action.payload,
       };
+    case ACTIONS.GET_PHOTOS_BY_TOPIC:
+      return {
+        ...state,
+        photoData: action.payload,
+      };
+
     default:
       throw new Error(
         `Tried to reduce with unsupported action type: ${action.type}`
@@ -92,30 +100,26 @@ const useApplicationData = () => {
     dispatch({ type: ACTIONS.SET_SELECTED_PHOTO_ID, payload: id || null });
   };
 
+  // Fetch photos by topics 
+  const fetchPhotosByTopic = (id) => {
+    fetch("/api/topics/photos/" + id)
+      .then((res) => res.json())
+      .then((data) => dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPIC, payload: data }));
+  };
+
   //Fetch photo data
   useEffect(() => {
     fetch("/api/photos")
       .then((res) => res.json())
       .then((data) => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }))
-  }, []);
-  // useEffect(() => {
-  //   fetch("/api/photos")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log("Fetched Photo Data:", data);
-  //       dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data });
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error Fetching Photo Data:", error);
-  //     });
-  // }, []);
+  }, []); // Empty dependency array to render once after mounting
 
   // Fetch topic data
   useEffect(() => {
     fetch("/api/topics")
       .then(res => res.json())
       .then(data => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }));
-  }, []); // Empty dependency array to render once after mounting
+  }, []);
 
   return {
     state,
@@ -126,6 +130,8 @@ const useApplicationData = () => {
       setSelectedPhoto,
       photoData: state.photoData,
       topicData: state.topicData,
+      topicPhotos: state.topicPhotos,
+      fetchPhotosByTopic,
     },
   };
 }
